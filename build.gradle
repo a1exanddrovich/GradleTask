@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+}
+
+group 'org.example'
+version '1.3.5'
+
+targetCompatibility = 8
+sourceCompatibility = 8
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes ('Implementation-Title' : project.name,
+                    'Implementation-Version' : project.version,
+                    'Main-Class' : 'com.epam.task.first.StringUtils')
+    }
+}
