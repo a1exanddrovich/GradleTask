@@ -1,11 +1,12 @@
 package com.epam.task.first;
 
-import static org.apache.commons.lang3.StringUtils.isNumeric;
-
 public class StringUtils {
 
+    private final static String ZERO = "0.0";
+    private final static String MINUS = "-";
+
     public boolean isPositiveNumbers(String str) {
-        return isNumeric(str) && (!str.equals("0.0") && !str.startsWith("-"));
+        return  org.apache.commons.lang3.StringUtils.isNumeric(str) && (!str.equals(ZERO) && !str.startsWith(MINUS));
     }
 
 }
