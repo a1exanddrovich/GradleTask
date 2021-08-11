@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 group 'org.example'
@@ -14,9 +15,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.10'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation 'org.apache.commons:commons-lang3:3.10'
 }
 
 test {
@@ -26,7 +27,15 @@ test {
 jar {
     manifest {
         attributes ('Implementation-Title' : project.name,
-                    'Implementation-Version' : project.version,
-                    'Main-Class' : 'com.epam.task.first.StringUtils')
+                    'Implementation-Version' : project.version)
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = layout.buildDirectory.dir('repo')
+        }
     }
 }
